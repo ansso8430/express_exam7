@@ -1,0 +1,34 @@
+{% extends '../layout.html' %}
+{% block content %}
+<div class='calendar'>
+	<div class='navi'>
+		<a href='?year={{ prevYear }}&month={{ prevMonth }}'>
+			<i class="xi-arrow-left"></i>
+			이전달
+		</a>
+		<span class="current">{{ year }}년 {{ month }}월</span>
+		<a href='?year={{ nextYear }}&month={{ nextMonth }}'>
+			다음달
+			<i class="xi-arrow-right"></i>
+		</a>
+	</div>
+
+	<ul class='yoils'>
+	{% for yoil in yoils %}
+		<li>{{ yoil }}</li>
+	{% endfor %}
+	</ul>
+	
+	<ul class='days'>
+	{% for item in days %}
+		<li data-stamp="{{ item.stamp }}">
+			<div class="day">{{ item.day }}</div>
+			{% if item.info.title %}
+			<div class="tit">{{ item.info.title }}</div>
+			{% endif %}
+		</li>
+	{% endfor %}
+	</ul>
+</div>
+<!--// calendar -->
+{% endblock %}

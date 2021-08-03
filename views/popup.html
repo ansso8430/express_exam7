@@ -24,29 +24,18 @@
 		{% block script %}
 		{% endblock %}
 	</head>
-	<body>
-		{% block header %}
+	<body id="popup_page">
 		<header>
-		{% include 'outline/header/main.html' %}	
+		{% block header %}
+            팝업제목
+		{% endblock %}
+
 		</header>
-		{% endblock %}
-		
-		{% block nav %}
-		<nav>
-		{% include 'outline/menu/main.html' %}
-		</nav>
-		{% endblock %}
 		
 		<main>
 		{% block content %}
 		{% endblock %}
 		</main>
-		
-		{% block footer %}
-		<footer>
-		{% include 'outline/footer/main.html' %}
-		</footer>
-		{% endblock %}
 
 		<iframe name="iframHidden" width="100%" height="500" frameborder="0" style="display: none;"></iframe>
 	</body>

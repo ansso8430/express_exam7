@@ -6,11 +6,14 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const path = require('path');
 const logger = require('./lib/logger');
+const bootStrap = require('./boot');
 
 
 // 라우터
 const memberRouter = require("./routes/member");
 const indexRouter = require("./routes");
+const scheduleRouter = require('./routes/schedule');
+const schedule2Router = require('./routes/schedule2');
 
 const app = express();
 
@@ -33,6 +36,9 @@ app.use(session({
     name : 'yhsession',
 }));
 
+// 사이트 초기화 미들웨어
+app.use(bootStrap);
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(express.json());
@@ -41,8 +47,8 @@ app.use(express.urlencoded({ extended: false }));
 // 라우터 등록
 app.use(indexRouter);
 app.use("/member", memberRouter);
-
-
+app.use("/schedule", scheduleRouter);
+app.use("/schedule2", schedule2Router);
 
 // 없는
 app.use ((req, res, next) => {
